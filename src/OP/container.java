@@ -24,13 +24,16 @@ public class container extends Thread {
 		frame.pack(); // 프레임 설정
 		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 종료
 	}
-
+	
+	Date dt = new Date();
+	SimpleDateFormat s = new SimpleDateFormat("yyyy년-MM월-dd일 aa hh시 mm분 ss초");
+	long start;
 	// 컨테이너 실행
 	public void run() {
 		frame.setVisible(true); // 프레임 보이게 하기
+		start = System.currentTimeMillis();
 		for (int i = 0;; i++) {
-			Date dt = new Date();
-			SimpleDateFormat s = new SimpleDateFormat("yyyy년-MM월-dd일 aa hh시 mm분 ss초");
+			dt = new Date();
 			String s_t = s.format(dt);
 			label.setText(s_t);
 			try {
@@ -45,6 +48,10 @@ public class container extends Thread {
 	// 컨테이너 종료기능
 	public void containerstop() {
 		frame.setVisible(false);
+		long end = System.currentTimeMillis();
+		SimpleDateFormat s = new SimpleDateFormat("hh시 mm분 ss초");
+		String s_t = s.format(end-start);
+		System.out.println("사용 시간 "+s_t);
 	}
 
 }
