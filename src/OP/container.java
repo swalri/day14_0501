@@ -50,8 +50,18 @@ public class container extends Thread {
 		frame.setVisible(false);
 		long end = System.currentTimeMillis();
 		SimpleDateFormat s = new SimpleDateFormat("hh시 mm분 ss초");
-		String s_t = s.format(end-start);
-		System.out.println("사용 시간 "+s_t);
+		// 1시간 60분 3600초 3600000
+		int end_hour = (int) (end/1000/60/60);
+		int end_min = (int) (end/1000/60%60);
+		int end_sec = (int) (end/1000%60);
+		int start_hour = (int) (start/1000/60/60);
+		int start_min = (int) (start/1000/60%60);
+		int start_sec = (int) (start/1000%60);
+		System.out.println(end_hour-start_hour);
+		System.out.println(end_min-start_min);
+		System.out.println(end_sec-start_sec);
+//		String s_t = s.format(end-start);
+//		System.out.println("사용 시간 "+s_t);
 	}
 
 }
